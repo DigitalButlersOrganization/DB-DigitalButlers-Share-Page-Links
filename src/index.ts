@@ -1,4 +1,4 @@
-// import './style.scss';
+import './style.scss';
 import { SharePageCallbacks } from './interfaces';
 
 const DEFAULT_PARAMETERS = {
