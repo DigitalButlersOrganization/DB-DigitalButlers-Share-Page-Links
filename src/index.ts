@@ -1,6 +1,11 @@
 import './style.scss';
 import { SharePageCallbacks } from './interfaces';
 
+const CLASSES = {
+	UNACTIVE: 'js--unactive',
+	ACTIVE: 'js--active',
+};
+
 const DEFAULT_PARAMETERS = {
 	messageForShareViaEmail: 'I think it will be interesting for you to read this article',
 	pageName: 'We recommend it for reading',
@@ -9,10 +14,13 @@ const DEFAULT_PARAMETERS = {
 
 export class SharePageLinks {
 	linkSelector: string;
+	copyButtonSelector: string;
+	tooltipSelector: string;
 	href: string;
 	arrayOfMainTagNames: string[];
 	arrayOfMainTags: HTMLElement[];
 	arrayOfSharePageLinks: HTMLElement[];
+	arrayOfCopyButtons: HTMLElement[];
 	messageForShareViaEmail: string;
 	pageName: string;
 	on: SharePageCallbacks = {};
@@ -20,16 +28,61 @@ export class SharePageLinks {
 	constructor(customParameters: {}) {
 		const parameters = { ...DEFAULT_PARAMETERS, ...customParameters };
 		this.linkSelector = 'a[data-network-name]';
+		this.copyButtonSelector = '[data-copy-button]';
+		this.tooltipSelector = '[data-copy-button-tooltip]';
 		this.href = window.location.href;
 		this.arrayOfMainTagNames = ['title', 'h1', '[role="heading"][aria-level="1"]'];
 		this.arrayOfMainTags = [];
 		this.arrayOfSharePageLinks = Array.from(document.querySelectorAll(this.linkSelector));
+		this.arrayOfCopyButtons = Array.from(document.querySelectorAll(this.copyButtonSelector));
 		this.messageForShareViaEmail = parameters.messageForShareViaEmail;
 		this.pageName = parameters.pageName;
 		this.on = parameters.on;
 	}
 
 	init = () => {
+		this.initShareButtons();
+		this.initCopyButtons();
+
+		if (this.on.afterInit) {
+			this.on.afterInit(this);
+		}
+	};
+
+	initCopyButtons = () => {
+		this.arrayOfCopyButtons.forEach((button) => {
+			button.addEventListener('click', this.copyUrlToClipboard);
+		});
+	};
+
+	copyUrlToClipboard = (event: Event) => {
+		const button = event.currentTarget as HTMLElement;
+		event.preventDefault();
+		navigator.clipboard
+			.writeText(window.location.href)
+			.then(() => {
+				this.showTooltip(button, 'Copied!');
+			})
+			.catch(() => {
+				this.showTooltip(button, 'Unknown error');
+			});
+	};
+
+	showTooltip = (button: HTMLElement, text: string) => {
+		const tooltip = button.querySelector(this.tooltipSelector);
+		if (tooltip) {
+			button.classList.add(CLASSES.UNACTIVE);
+			tooltip.textContent = text;
+			tooltip.classList.add(CLASSES.ACTIVE);
+			setTimeout(() => {
+				button.classList.remove(CLASSES.UNACTIVE);
+				button.addEventListener('click', this.copyUrlToClipboard);
+				tooltip.classList.remove(CLASSES.ACTIVE);
+			}, 1000);
+		}
+	};
+
+	initShareButtons = () => {
 		this.arrayOfMainTagNames.forEach((tagName) => {
 			const element = document.querySelector(tagName);
 			if (element) this.arrayOfMainTags.push(element as HTMLElement);
@@ -55,8 +108,7 @@ export class SharePageLinks {
 					break;
 				}
 				case 'linkedin': {
-					(link as HTMLAnchorElement).href =
-						`https://www.linkedin.com/shareArticle?mini=true&url=${this.href}&title=${this.pageName}`;
+					(link as HTMLAnchorElement).href = `https://www.linkedin.com/shareArticle?mini=true&url=${this.href}&title=${this.pageName}`;
 					(link as HTMLAnchorElement).target = '_blank';
 					break;
 				}
@@ -76,8 +128,5 @@ export class SharePageLinks {
 				}
 			}
 		});
-		if (this.on.afterInit) {
-			this.on.afterInit(this);
-		}
 	};
 }

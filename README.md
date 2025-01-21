@@ -6,12 +6,12 @@
 
 ```html
 <section>
-				<a href="" data-network-name="whats-app">WhatsApp</a>
-				<a href="" data-network-name="facebook">Facebook</a>
-				<a href="" data-network-name="twitter">Twitter</a>
-				<a href="" data-network-name="linkedin">Linkedin</a>
-				<a href="" data-network-name="telegram">Telegram</a>
-				<a href="" data-network-name="email">Email</a>
+	<a href="" data-network-name="whats-app">WhatsApp</a>
+	<a href="" data-network-name="facebook">Facebook</a>
+	<a href="" data-network-name="twitter">Twitter</a>
+	<a href="" data-network-name="linkedin">Linkedin</a>
+	<a href="" data-network-name="telegram">Telegram</a>
+	<a href="" data-network-name="email">Email</a>
 </section>
 ```
 
@@ -26,31 +26,49 @@ const shareLinks = new SharePageLinks({
 });
 
 shareLinks.init();
-
 ```
 
 ## API
 
 ### Config Properties
 
-
 ### `messageForShareViaEmail`
-*Type:* `string`
-*Default:* `'I think it will be interesting for you to read this article'`
-*Description:* The text to insert in the "subject of the message" field (if we share a link to the page in the email)
+
+_Type:_ `string`
+_Default:_ `'I think it will be interesting for you to read this article'`
+_Description:_ The text to insert in the "subject of the message" field (if we share a link to the page in the email)
 
 ### `pageName`
-*Type:* `string`
-*Default:* `'We recommend it for reading'`
-*Description:* If there is no 'title', 'h1', '[role="heading"][aria-level="1"]' on the page, this text will be used instead
 
+_Type:_ `string`
+_Default:_ `'We recommend it for reading'`
+_Description:_ If there is no 'title', 'h1', '[role="heading"][aria-level="1"]' on the page, this text will be used instead
+
+### `on`
+
+_Type:_ `object`
+_Default:_ `{}`
+_Description:_ Object with callbacks
+
+### `copyButtonSelector`
+
+_Type:_ `string`
+_Default:_ `'[data-copy-button]'`
+_Description:_ Selector for the copy button
+
+### `tooltipSelector`
+
+_Type:_ `string`
+_Default:_ `'[data-copy-button-tooltip]'`
+_Description:_ Selector for the tooltip
 
 ### Events callback config object
 
 ### `afterInit`
-*Type:* `function`
-*Default:* `undefined`
-*Description:* Callback will be started after SharePageLinks initialization
+
+_Type:_ `function`
+_Default:_ `undefined`
+_Description:_ Callback will be started after SharePageLinks initialization
 
 ## License
 
