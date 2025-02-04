@@ -57,9 +57,10 @@ export class SharePageLinks {
 
 	copyUrlToClipboard = (event: Event) => {
 		const button = event.currentTarget as HTMLElement;
+		const textToCopy = button.dataset.copyValue || window.location.href;
 		event.preventDefault();
 		navigator.clipboard
-			.writeText(window.location.href)
+			.writeText(textToCopy)
 			.then(() => {
 				this.showTooltip(button, 'Copied!');
 			})

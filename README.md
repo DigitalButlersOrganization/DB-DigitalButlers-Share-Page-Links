@@ -28,9 +28,24 @@ const shareLinks = new SharePageLinks({
 shareLinks.init();
 ```
 
+### Create a copy button
+
+Will copy the current page URL to the clipboard
+
+```html
+<button>Copy link</button>
+```
+
+Will copy custom value from 'data-copy-value' attribute
+
+```html
+<button data-copy-value="Hello world!">Copy link</button>
+```
+
 ## API
 
 ### Config Properties
+
 
 ### `messageForShareViaEmail`
 
