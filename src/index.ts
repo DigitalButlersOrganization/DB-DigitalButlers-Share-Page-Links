@@ -63,6 +63,9 @@ export class SharePageLinks {
 			.writeText(textToCopy)
 			.then(() => {
 				this.showTooltip(button, 'Copied!');
+				if (this.on.copy) {
+					this.on.copy(this, button);
+				}
 			})
 			.catch(() => {
 				this.showTooltip(button, 'Unknown error');

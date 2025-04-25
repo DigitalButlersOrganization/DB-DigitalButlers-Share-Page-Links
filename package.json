@@ -1,10 +1,10 @@
 {
 	"name": "@digital-butlers/share-page-links",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"type": "module",
 	"description": "A convenient library with share page links for everyday tasks",
 	"keywords": [
-		"tabs"
+		"share page links"
 	],
 	"homepage": "https://github.com/DigitalButlersOrganization/DB-DigitalButlers-Share-Pahe-Links#readme",
 	"website": "https://www.digitalbutlers.team/",
