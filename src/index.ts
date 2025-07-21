@@ -101,8 +101,7 @@ export class SharePageLinks {
 					break;
 				}
 				case 'facebook': {
-					(link as HTMLAnchorElement).href =
-						`https://www.facebook.com/sharer.php?s=100&u=${this.href}&p[title]=${this.pageName}&p[summary]=${this.pageName}`;
+					(link as HTMLAnchorElement).href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.href)}`;
 					(link as HTMLAnchorElement).target = '_blank';
 					break;
 				}
