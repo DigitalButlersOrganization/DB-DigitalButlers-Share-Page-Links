@@ -9,6 +9,7 @@
 	<a href="" data-network-name="whats-app">WhatsApp</a>
 	<a href="" data-network-name="facebook">Facebook</a>
 	<a href="" data-network-name="twitter">Twitter</a>
+	<a href="" data-network-name="x">X</a>
 	<a href="" data-network-name="linkedin">Linkedin</a>
 	<a href="" data-network-name="telegram">Telegram</a>
 	<a href="" data-network-name="email">Email</a>
@@ -48,81 +49,81 @@ Will copy custom value from 'data-copy-value' attribute
 
 ### `messageForShareViaEmail`
 
-_Type:_  
-`string`  
-_Default:_  
-`'I think it will be interesting for you to read this article'`  
-_Description:_  
-The text to insert in the "subject of the message" field (if we share a link to the page in the email)  
-_Description_RU:_  
+_Type:_
+`string`
+_Default:_
+`'I think it will be interesting for you to read this article'`
+_Description:_
+The text to insert in the "subject of the message" field (if we share a link to the page in the email)
+_Description_RU:_
 Текст, который будет вставлен в поле "тема сообщения" (если мы делимся ссылкой на страницу по электронной почте)
 
 ### `pageName`
 
-_Type:_  
-`string`  
-_Default:_  
-`'We recommend it for reading'`  
-_Description:_  
-If there is no 'title', 'h1', '[role="heading"][aria-level="1"]' on the page, this text will be used instead  
-_Description_RU:_  
+_Type:_
+`string`
+_Default:_
+`'We recommend it for reading'`
+_Description:_
+If there is no 'title', 'h1', '[role="heading"][aria-level="1"]' on the page, this text will be used instead
+_Description_RU:_
 Если на странице нет 'title', 'h1', '[role="heading"][aria-level="1"]', будет использован этот текст
 
 ### `on`
 
-_Type:_  
-`object`  
-_Default:_  
-`{}`  
-_Description:_  
-Object with callbacks  
-_Description_RU:_  
+_Type:_
+`object`
+_Default:_
+`{}`
+_Description:_
+Object with callbacks
+_Description_RU:_
 Объект с функциями обратного вызова
 
 ### `copyButtonSelector`
 
-_Type:_  
-`string`  
-_Default:_  
-`'[data-copy-button]'`  
-_Description:_  
-Selector for the copy button  
-_Description_RU:_  
+_Type:_
+`string`
+_Default:_
+`'[data-copy-button]'`
+_Description:_
+Selector for the copy button
+_Description_RU:_
 Селектор для кнопки копирования
 
 ### `tooltipSelector`
 
-_Type:_  
-`string`  
-_Default:_  
-`'[data-copy-button-tooltip]'`  
-_Description:_  
-Selector for the tooltip  
-_Description_RU:_  
+_Type:_
+`string`
+_Default:_
+`'[data-copy-button-tooltip]'`
+_Description:_
+Selector for the tooltip
+_Description_RU:_
 Селектор для всплывающей подсказки
 
 ### Events callback config object
 
 ### `afterInit`
 
-_Type:_  
-`function`  
-_Default:_  
-`undefined`  
-_Description:_  
-Callback will be started after SharePageLinks initialization  
-_Description_RU:_  
+_Type:_
+`function`
+_Default:_
+`undefined`
+_Description:_
+Callback will be started after SharePageLinks initialization
+_Description_RU:_
 Функция обратного вызова, которая будет запущена после инициализации SharePageLinks
 
 ### `copy`
 
-_Type:_  
-`function`  
-_Default:_  
-`undefined`  
-_Description:_  
-Callback will be started after  
-_Description_RU:_  
+_Type:_
+`function`
+_Default:_
+`undefined`
+_Description:_
+Callback will be started after
+_Description_RU:_
 Функция обратного вызова, которая будет запущена после копирования
 
 #### Пример использования
