@@ -33,7 +33,7 @@ class l {
     a(this, "copyUrlToClipboard", (t) => {
       const e = t.currentTarget, o = e.dataset.copyValue || window.location.href;
       t.preventDefault(), navigator.clipboard.writeText(o).then(() => {
-        this.showTooltip(e, "Copied!");
+        this.showTooltip(e, "Copied!"), this.on.copy && this.on.copy(this, e);
       }).catch(() => {
         this.showTooltip(e, "Unknown error");
       });
@@ -55,10 +55,14 @@ class l {
             break;
           }
           case "facebook": {
-            t.href = `https://www.facebook.com/sharer.php?s=100&u=${this.href}&p[title]=${this.pageName}&p[summary]=${this.pageName}`, t.target = "_blank";
+            t.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.href)}`, t.target = "_blank";
             break;
           }
           case "twitter": {
+            t.href = `http://twitter.com/share?text=${this.pageName}&url=${this.href}`, t.target = "_blank";
+            break;
+          }
+          case "x": {
             t.href = `http://twitter.com/share?text=${this.pageName}&url=${this.href}`, t.target = "_blank";
             break;
           }
