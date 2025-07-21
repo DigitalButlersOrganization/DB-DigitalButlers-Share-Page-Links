@@ -110,6 +110,11 @@ export class SharePageLinks {
 					(link as HTMLAnchorElement).target = '_blank';
 					break;
 				}
+				case 'x': {
+					(link as HTMLAnchorElement).href = `http://twitter.com/share?text=${this.pageName}&url=${this.href}`;
+					(link as HTMLAnchorElement).target = '_blank';
+					break;
+				}
 				case 'linkedin': {
 					(link as HTMLAnchorElement).href = `https://www.linkedin.com/shareArticle?mini=true&url=${this.href}&title=${this.pageName}`;
 					(link as HTMLAnchorElement).target = '_blank';
